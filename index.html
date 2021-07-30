@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="">
+    <link rel="stylesheet" href="">
+    <title>Video</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div id="container">
+        <div class="video">
+            <video src="https://res.cloudinary.com/talhaquddoos/video/upload/eo_29,so_0/v1627576807/2669246683_hwtrug.mp4" id="video"></video>
+            
+        </div>
+        
+        <div class="controls">
+            <div class="button play-pause-button" id="playPause">
+                <span class="material-icons">play_arrow</span>
+            </div>
+            <div class="time">00:00</div>
+            <div class="slider">
+                <div class="range-slider">
+                    <input class="range-slider__range" type="range" value="0" min="0" max="100" id="sliderValue">
+                </div>
+
+            </div>
+            <div class="skip-buttons">
+                <div class="button replay-slide">
+                    <span class="material-icons">replay</span>
+                </div>
+                <div class="button prev-slide disabled">
+                    <span class="material-icons">skip_previous</span>
+
+                </div>
+                <div class="button next-slide">
+                    <span class="material-icons">skip_next</span>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="container mt-sm-5 my-1 hidden" id="quiz">
+            <div class="question ml-sm-5 pl-sm-5 pt-2">
+                <div class="py-2 h5"><b>Q. which option best describes your job role?</b></div>
+                <div class="ml-md-3 ml-sm-3 pl-md-5 pt-sm-0 pt-3" id="options"> <label class="options">Small Business Owner or Employee <input type="radio" name="radio"> <span class="checkmark"></span> </label> <label class="options">Nonprofit Owner or Employee <input type="radio" name="radio"> <span class="checkmark"></span> </label> <label class="options">Journalist or Activist <input type="radio" name="radio"> <span class="checkmark"></span> </label> <label class="options">Other <input type="radio" name="radio"> <span class="checkmark"></span> </label> </div>
+            </div>
+            <div class="d-flex align-items-center pt-3">
+                <div id="prev"> <button class="btn btn-primary">Previous</button> </div>
+                <div class="ml-auto mr-sm-5"> <button class="btn btn-success">Next</button> </div>
+            </div>
+        </div>
+
+
+        
+        
+    </div>
+
+<script>
+    const timeStamps = [0, 29, 83, 131, 147, 201];
+</script>
+
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="script.js"></script>
+</body>
+
+</html>
