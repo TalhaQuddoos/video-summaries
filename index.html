@@ -14,6 +14,7 @@
 </head>
 
 <body>
+    
     <div id="container">
         <div class="video">
             <video src="https://res.cloudinary.com/talhaquddoos/video/upload/eo_29,so_0/v1627576807/2669246683_hwtrug.mp4" id="video"></video>
@@ -47,14 +48,40 @@
 
 
         <div class="container mt-sm-5 my-1 hidden" id="quiz">
-            <div class="question ml-sm-5 pl-sm-5 pt-2">
-                <div class="py-2 h5"><b>Q. which option best describes your job role?</b></div>
-                <div class="ml-md-3 ml-sm-3 pl-md-5 pt-sm-0 pt-3" id="options"> <label class="options">Small Business Owner or Employee <input type="radio" name="radio"> <span class="checkmark"></span> </label> <label class="options">Nonprofit Owner or Employee <input type="radio" name="radio"> <span class="checkmark"></span> </label> <label class="options">Journalist or Activist <input type="radio" name="radio"> <span class="checkmark"></span> </label> <label class="options">Other <input type="radio" name="radio"> <span class="checkmark"></span> </label> </div>
+            
+            <div class="question ml-sm-5 pl-sm-5 pt-2 q1">
+                <h1 class="text-center">Question 1</h1>
+                <div class="py-2 h5"><b>Which is the largest continent?</b></div>
+                <div class="ml-md-3 ml-sm-3 pl-md-5 pt-sm-0 pt-3" id="options">
+                    <label class="options">Asia<input type="radio" name="q1" onclick="checkAnswer(this)" value="1"> <span class="checkmark"></span></label> 
+                    <label class="options">America<input type="radio" name="q1" onclick="checkAnswer(this)" value="2"> <span class="checkmark"></span></label> 
+                </div>
+                <div class="d-flex align-items-center pt-3">
+                    <div class="ml-auto mr-sm-5"> <button class="btn btn-success" onclick="nextQuestion()">Next</button> </div>
+                </div>
             </div>
-            <div class="d-flex align-items-center pt-3">
-                <div id="prev"> <button class="btn btn-primary">Previous</button> </div>
-                <div class="ml-auto mr-sm-5"> <button class="btn btn-success">Next</button> </div>
+
+            <div class="question ml-sm-5 pl-sm-5 pt-2 q2">
+                <h1 class="text-center">Question 2</h1>
+
+                <div class="py-2 h5"><b>How many continents are there in the world?</b></div>
+                <div class="ml-md-3 ml-sm-3 pl-md-5 pt-sm-0 pt-3" id="options">
+                    <label class="options">6<input type="radio" name="q2" onclick="checkAnswer(this)" value="1"> <span class="checkmark"></span></label> 
+                    <label class="options">7<input type="radio" name="q2" onclick="checkAnswer(this)" value="2"> <span class="checkmark"></span></label> 
+
+
+                </div>
+                <div class="d-flex align-items-center pt-3">
+                    <div id="prev"> <button class="btn btn-primary" onclick="prevQuestion()">Previous</button> </div>
+                    <div class="ml-auto mr-sm-5"> <button class="btn btn-success" onclick="showResult()">Finish</button> </div>
+                </div>
             </div>
+
+            <div class="question ml-sm-5 pl-sm-5 pt-2 result">
+                <h1 class="text-center">Result</h1>
+                <div class="py-2 h5 text-center"><b>Your score: <span></span> </b></div>
+            </div>
+
         </div>
 
 
@@ -64,6 +91,8 @@
 
 <script>
     const timeStamps = [0, 29, 83, 131, 147, 201];
+    document.querySelector(".q2").hidden = true;
+    document.querySelector(".result").hidden = true;
 </script>
 
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.bundle.min.js"></script>

@@ -36,7 +36,7 @@ function parseTime(time) {
     const minutes = Math.floor(time / 60)
     let seconds = Math.floor(time % 60)
     seconds = seconds > 9 ? seconds : `0${seconds}`
-    
+
     return `${minutes}:${seconds}`
 }
 
@@ -57,17 +57,18 @@ function loadVideo(start, end) {
 }
 
 function nextVideo() {
-    
-    if(videoNumber == timeStamps.length - 3){
-        nextButton.onclick = () => {}
-        nextButton.classList.add("disabled")
-    }
 
-    
-    if(videoNumber == timeStamps.length - 2) {
-        // video.classList.add("hidden")
+    // if(videoNumber == timeStamps.length - 3){
+    //     nextButton.onclick = () => {}
+    //     nextButton.classList.add("disabled")
+    // }
+
+
+    if (videoNumber == timeStamps.length - 2) {
+        video.classList.add("hidden")
         // controlsContainer.classList.add("hidden")
-        // quiz.classList.remove("hidden")
+        controlsContainer.hidden = true;
+        quiz.classList.remove("hidden")
 
         return;
     }
@@ -76,18 +77,18 @@ function nextVideo() {
     console.log(videoNumber)
     previousButton.addEventListener("click", previousVideo);
     previousButton.classList.remove("disabled");
-    loadVideo(timeStamps[videoNumber], timeStamps[videoNumber+1])
+    loadVideo(timeStamps[videoNumber], timeStamps[videoNumber + 1])
 }
 
 
 function previousVideo() {
-    
-    if(videoNumber == 1) {
-        previousButton.onclick = () => {}
+
+    if (videoNumber == 1) {
+        previousButton.onclick = () => { }
         previousButton.classList.add("disabled")
     }
-    
-    if(videoNumber == 0) {
+
+    if (videoNumber == 0) {
         return;
     }
 
@@ -95,8 +96,8 @@ function previousVideo() {
     console.log(videoNumber)
     nextButton.addEventListener("click", nextVideo);
     nextButton.classList.remove("disabled");
-    
-    loadVideo(timeStamps[videoNumber], timeStamps[videoNumber+1])
+
+    loadVideo(timeStamps[videoNumber], timeStamps[videoNumber + 1])
 }
 
 setInterval(updateTime, 500)
@@ -112,3 +113,36 @@ replayButton.addEventListener('click', replayVideo);
 video.addEventListener('click', togglePlay)
 
 nextButton.addEventListener("click", nextVideo)
+
+
+
+var score = 0;
+function checkAnswer(e) {
+    if (e.value == 1 && e.name == 'q1') {
+        score++;
+        nextQuestion();
+    }
+    else if (e.value == 2 && e.name == 'q2') {
+        score++;
+        showResult();
+    } else {
+        e.nextElementSibling.style.background = "darkred";
+    }
+}
+
+function nextQuestion() {
+    document.querySelector(".q1").hidden = true;
+    document.querySelector(".q2").hidden = false;
+}
+
+function prevQuestion() {
+    document.querySelector(".q2").hidden = true;
+    document.querySelector(".q1").hidden = false;
+}
+
+function showResult() {
+    document.querySelector(".q2").hidden = true;
+    document.querySelector(".result").hidden = false;
+    document.querySelector(".result > div > b > span").textContent = `${parseInt((score / 2) * 100)}% (${score} / 2)`;
+
+}
