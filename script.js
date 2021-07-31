@@ -162,7 +162,7 @@ function startChapter2() {
     controlsContainer.hidden = false;
     nextVideo();
 }
-
+       
 function showChapter2() {
     document.querySelector(".chapter-2").hidden = false;
     video.hidden = true;
