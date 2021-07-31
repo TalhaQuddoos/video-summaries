@@ -16,12 +16,28 @@
 <body>
     
     <div id="container">
-        <div class="video">
+        <div class="question text-white p-5 text-center w-100 chapter-1">
+            <h2 class="text-center mb-2 mt-5">Chapter 1</h2>
+            <h1 class="text-center mb-5">Explore the Airport with CAG Leadership Principles!</h1>
+            <div class="text-center mt-5">
+                <button class="btn btn-success btn-lg mt-3 mb-5" onclick="startChapter1()">Start Chapter</button>
+            </div>
+        </div>
+
+        <div class="question text-white p-5 text-center w-100 chapter-2" hidden>
+            <h2 class="text-center mb-2 mt-5">Chapter 2</h2>
+            <h1 class="text-center mb-5">Take Ownership Holistically as One CAG</h1>
+            <div class="text-center mt-5">
+                <button class="btn btn-success btn-lg mt-3 mb-5" onclick="startChapter2()">Start Chapter</button>
+            </div>
+        </div>
+
+        <div class="video hidden">
             <video src="https://res.cloudinary.com/talhaquddoos/video/upload/eo_29,so_0/v1627576807/2669246683_hwtrug.mp4" id="video"></video>
             
         </div>
         
-        <div class="controls">
+        <div class="controls" hidden>
             <div class="button play-pause-button" id="playPause">
                 <span class="material-icons">play_arrow</span>
             </div>
@@ -51,35 +67,57 @@
             
             <div class="question ml-sm-5 pl-sm-5 pt-2 q1">
                 <h1 class="text-center">Question 1</h1>
-                <div class="py-2 h5"><b>Which is the largest continent?</b></div>
+                <div class="py-2 h5"><b>Should we get our job done at the expenses of our colleagues?</b></div>
                 <div class="ml-md-3 ml-sm-3 pl-md-5 pt-sm-0 pt-3" id="options">
-                    <label class="options">Asia<input type="radio" name="q1" onclick="checkAnswer(this)" value="1"> <span class="checkmark"></span></label> 
-                    <label class="options">America<input type="radio" name="q1" onclick="checkAnswer(this)" value="2"> <span class="checkmark"></span></label> 
+                    <label class="options">Yes<input type="radio" name="q1" onclick="checkAnswer(this)" value="1"> <span class="checkmark"></span></label> 
+                    <label class="options">No<input type="radio" name="q1" onclick="checkAnswer(this)" value="2"> <span class="checkmark"></span></label> 
                 </div>
                 <div class="d-flex align-items-center pt-3">
-                    <div class="ml-auto mr-sm-5"> <button class="btn btn-success" onclick="nextQuestion()">Next</button> </div>
+                    <div class="ml-auto mr-sm-5"> <button class="btn btn-success" onclick="nextQuestion(2)">Next</button> </div>
                 </div>
             </div>
 
-            <div class="question ml-sm-5 pl-sm-5 pt-2 q2">
+            <div class="question ml-sm-5 pl-sm-5 pt-2 q2" hidden>
                 <h1 class="text-center">Question 2</h1>
 
-                <div class="py-2 h5"><b>How many continents are there in the world?</b></div>
+                <div class="py-2 h5"><b>We should always help ourselves in our job instead of helping others to succeed.</b></div>
                 <div class="ml-md-3 ml-sm-3 pl-md-5 pt-sm-0 pt-3" id="options">
-                    <label class="options">6<input type="radio" name="q2" onclick="checkAnswer(this)" value="1"> <span class="checkmark"></span></label> 
-                    <label class="options">7<input type="radio" name="q2" onclick="checkAnswer(this)" value="2"> <span class="checkmark"></span></label> 
+                    <label class="options">Yes<input type="radio" name="q2" onclick="checkAnswer(this)" value="1"> <span class="checkmark"></span></label> 
+                    <label class="options">No<input type="radio" name="q2" onclick="checkAnswer(this)" value="2"> <span class="checkmark"></span></label> 
 
 
                 </div>
                 <div class="d-flex align-items-center pt-3">
-                    <div id="prev"> <button class="btn btn-primary" onclick="prevQuestion()">Previous</button> </div>
+                    <div id="prev"> <button class="btn btn-primary" onclick="prevQuestion(1)">Previous</button> </div>
+                    <div class="ml-auto mr-sm-5"> <button class="btn btn-success" onclick="nextQuestion(3)">Next</button> </div>
+                </div>
+            </div>
+
+
+            <div class="question ml-sm-5 pl-sm-5 pt-2 q3" hidden>
+                <h1 class="text-center">Question 3</h1>
+
+                <div class="py-2 h5"><b>Which is not a CAG Leadership Principles?</b></div>
+                <div class="ml-md-3 ml-sm-3 pl-md-5 pt-sm-0 pt-3" id="options">
+                    <label class="options">Build and Maintain Trust<input type="radio" name="q3" onclick="checkAnswer(this)" value="1"> <span class="checkmark"></span></label> 
+                    <label class="options">Shape the Future of CAG<input type="radio" name="q3" onclick="checkAnswer(this)" value="2"> <span class="checkmark"></span></label> 
+                    <label class="options">Obsess at your own KPI instead of customer<input type="radio" name="q3" onclick="checkAnswer(this)" value="3"> <span class="checkmark"></span></label> 
+
+
+                </div>
+                <div class="d-flex align-items-center pt-3">
+                    <div id="prev"> <button class="btn btn-primary" onclick="prevQuestion(2)">Previous</button> </div>
                     <div class="ml-auto mr-sm-5"> <button class="btn btn-success" onclick="showResult()">Finish</button> </div>
                 </div>
             </div>
+            
 
             <div class="question ml-sm-5 pl-sm-5 pt-2 result">
                 <h1 class="text-center">Result</h1>
-                <div class="py-2 h5 text-center"><b>Your score: <span></span> </b></div>
+                <div class="py-2 h5 text-center mt-3"><b>Your score: <span></span> </b></div>
+                <div class="text-center mt-3">
+                    <button class="btn btn-lg btn-success mt-3" onclick="location.reload()">Done</button>
+                </div>
             </div>
 
         </div>
@@ -90,8 +128,7 @@
     </div>
 
 <script>
-    const timeStamps = [0, 29, 83, 131, 201];
-    document.querySelector(".q2").hidden = true;
+    const timeStamps = [0, 29, 83, 83, 131, 201];
     document.querySelector(".result").hidden = true;
 </script>
 

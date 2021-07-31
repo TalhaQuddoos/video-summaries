@@ -8,7 +8,7 @@ const previousButton = document.querySelector(".prev-slide");
 const buttonIcon = playPauseButton.querySelector("span")
 const quiz = document.getElementById("quiz")
 const controlsContainer = document.querySelector(".controls")
-var videoNumber = 0;
+var videoNumber = -1;
 
 
 function showPlayIcon() {
@@ -57,23 +57,21 @@ function loadVideo(start, end) {
 }
 
 function nextVideo() {
-
-    // if(videoNumber == timeStamps.length - 3){
-    //     nextButton.onclick = () => {}
-    //     nextButton.classList.add("disabled")
-    // }
-
-
     if (videoNumber == timeStamps.length - 2) {
         video.classList.add("hidden")
-        // controlsContainer.classList.add("hidden")
         controlsContainer.hidden = true;
         quiz.classList.remove("hidden")
-
+        video.pause()
         return;
     }
 
+    
     videoNumber++;
+    if(videoNumber == 2) {
+        showChapter2();
+        video.pause();
+        return;
+    }
     console.log(videoNumber)
     previousButton.addEventListener("click", previousVideo);
     previousButton.classList.remove("disabled");
@@ -118,11 +116,14 @@ nextButton.addEventListener("click", nextVideo)
 
 var score = 0;
 function checkAnswer(e) {
-    if (e.value == 1 && e.name == 'q1') {
+    if (e.value == 2 && e.name == 'q1') {
         score++;
-        nextQuestion();
+        nextQuestion(2);
     }
     else if (e.value == 2 && e.name == 'q2') {
+        score++;
+        nextQuestion(3);
+    } else if(e.value == 3 && e.name == 'q3') {
         score++;
         showResult();
     } else {
@@ -130,19 +131,41 @@ function checkAnswer(e) {
     }
 }
 
-function nextQuestion() {
-    document.querySelector(".q1").hidden = true;
-    document.querySelector(".q2").hidden = false;
+function nextQuestion(i) {
+    document.querySelector(`.q${i}`).hidden = false;
+    document.querySelector(`.q${i-1}`).hidden = true;
 }
 
-function prevQuestion() {
-    document.querySelector(".q2").hidden = true;
-    document.querySelector(".q1").hidden = false;
+function prevQuestion(i) {
+    document.querySelector(`.q${i}`).hidden = false;
+    document.querySelector(`.q${i+1}`).hidden = true;
 }
 
 function showResult() {
-    document.querySelector(".q2").hidden = true;
+    document.querySelector(".q3").hidden = true;
     document.querySelector(".result").hidden = false;
-    document.querySelector(".result > div > b > span").textContent = `${parseInt((score / 2) * 100)}% (${score} / 2)`;
+    document.querySelector(".result > div > b > span").textContent = `${parseInt((score / 3) * 100)}% (${score} / 3)`;
 
+}
+
+function startChapter1() {
+    document.querySelector(".chapter-1").hidden = true;
+    document.querySelector(".video").classList.remove("hidden")
+    controlsContainer.hidden = false;
+    nextVideo();
+}
+
+function startChapter2() {
+    document.querySelector(".chapter-2").hidden = true;
+    document.querySelector(".video").classList.remove("hidden")
+    video.hidden = false;
+    controlsContainer.hidden = false;
+    nextVideo();
+}
+
+function showChapter2() {
+    document.querySelector(".chapter-2").hidden = false;
+    video.hidden = true;
+    document.querySelector(".video").classList.add("hidden")
+    controlsContainer.hidden = true;
 }
