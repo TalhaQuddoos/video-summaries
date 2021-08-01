@@ -13,7 +13,7 @@
 * {
     margin: 0;
     padding: 0;
-    box-sizing: border-box
+    box-sizing: border-box;
 }
 
 body {
@@ -21,8 +21,8 @@ body {
 }
 
 .container {
-    background-color: #555;
-    color: #ddd;
+    background-color: #893980; /* #555; */
+    color: #fff;
     border-radius: 10px;
     padding: 20px;
     font-family: 'Montserrat', sans-serif;
@@ -115,13 +115,13 @@ body {
 }
 
 #container {
-    background: black;
+    background: #893980;
 }
 
 .controls {
-    background-color: #000;
+    background-color: #893980;
     width: 100%;
-    color: white;
+    color: #fabb27;
     display: flex;
     align-items: center;
     margin: 0;
@@ -149,6 +149,11 @@ body {
 .button {
     transition: all 0.2s;
     user-select: none;
+}
+
+.btn-success {
+    background-color: #93877d!important;
+    border-color: #93877d!important;
 }
 
 .button:hover {
