@@ -67,11 +67,20 @@ function nextVideo() {
 
     
     videoNumber++;
-    if(videoNumber == 2) {
-        showChapter2();
-        video.pause();
-        return;
+    switch(videoNumber) {
+        case 1:
+            showChapter1Section2();
+            break;
+        case 3:
+            showChapter2();
+            video.pause();
+            return;
+            break;
+        case 5:
+            showChapter2Section2();
+            break;
     }
+
     console.log(videoNumber)
     previousButton.addEventListener("click", previousVideo);
     previousButton.classList.remove("disabled");
@@ -153,6 +162,7 @@ function startChapter1() {
     document.querySelector(".video").classList.remove("hidden")
     controlsContainer.hidden = false;
     nextVideo();
+    
 }
 
 function startChapter2() {
@@ -168,4 +178,32 @@ function showChapter2() {
     video.hidden = true;
     document.querySelector(".video").classList.add("hidden")
     controlsContainer.hidden = true;
+}
+
+function showChapter1Section2() {
+    document.querySelector(".chapter-1-section-2").hidden = false;
+    document.querySelector(".video").classList.add("hidden")
+    controlsContainer.hidden = true;
+
+}
+
+function startChapter1Section2() {
+    document.querySelector(".chapter-1-section-2").hidden = true;
+    document.querySelector(".video").classList.remove("hidden")
+    controlsContainer.hidden = false;
+    nextVideo();
+}
+
+function showChapter2Section2() {
+    document.querySelector(".chapter-2-section-2").hidden = false;
+    document.querySelector(".video").classList.add("hidden")
+    controlsContainer.hidden = true;
+
+}
+
+function startChapter2Section2() {
+    document.querySelector(".chapter-2-section-2").hidden = true;
+    document.querySelector(".video").classList.remove("hidden")
+    controlsContainer.hidden = false;
+    nextVideo();
 }
